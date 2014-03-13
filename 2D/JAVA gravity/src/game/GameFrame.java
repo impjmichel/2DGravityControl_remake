@@ -43,6 +43,7 @@ public class GameFrame extends JFrame implements KeyListener
 	private boolean									extraFact				= false;
 	private boolean									tenDeathsSeen			= false;
 	private boolean									twentyfiveDeathsSeen	= false;
+	private boolean									thirtyfiveDeathsSeen	= false;
 	private boolean									editorEnabled;
 	private int										tutorial				= 0;
 
@@ -166,6 +167,14 @@ public class GameFrame extends JFrame implements KeyListener
 				panel.setLine1(Messages.twentyfifthDeath);
 				panel.setLine2(Messages.twentyfifthDeath2);
 				twentyfiveDeathsSeen = true;
+			}
+			else if (world.getDeathCount() >= 35 && !thirtyfiveDeathsSeen)
+			{
+				panel.setSeen(false);
+				panel.setShow(true);
+				panel.setLine1(Messages.thirtyfifthDeath);
+				panel.setLine2(Messages.thirtyfifthDeath2);
+				thirtyfiveDeathsSeen = true;
 			}
 			if (tutorial == 0)
 			{

@@ -50,7 +50,7 @@ public class L1M03 extends GameMap
 			e.printStackTrace();
 		}
 		KeyControlPanel p = new KeyControlPanel(world, frame);
-		if(interAct1.size() > 2)
+		if(interAct1 != null && interAct1.size() > 2)
 		{
 			str = p.getKeyString(frame.getSwitchKey());
 			str = "Press " + str + " to use its functionality.";
@@ -99,7 +99,7 @@ public class L1M03 extends GameMap
 		super.actionPerformed(arg0);
 		if (!world.isClosedL1M3())
 		{
-			if (doorY > 214)
+			if (doorY > 220)
 			{
 				doorY--;
 				door.setPosition(800, doorY);
