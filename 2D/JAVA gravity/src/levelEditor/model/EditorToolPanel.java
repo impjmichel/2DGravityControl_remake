@@ -222,6 +222,7 @@ public class EditorToolPanel extends JPanel
 		return panel;
 	}
 
+	@SuppressWarnings("rawtypes")
 	private JPanel createSelectionPanel()
 	{
 		JPanel masterPanel = new JPanel(new BorderLayout());

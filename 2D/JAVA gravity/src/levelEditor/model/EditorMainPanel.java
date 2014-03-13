@@ -561,6 +561,7 @@ public class EditorMainPanel extends JPanel implements MouseListener, MouseMotio
 			setVisible(true);
 		}
 
+		@SuppressWarnings("unchecked")
 		private void createPanel()
 		{
 			Object[] options = { s[0], s[1] };
