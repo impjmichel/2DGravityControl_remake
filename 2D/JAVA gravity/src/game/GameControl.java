@@ -2,6 +2,7 @@ package game;
 
 import game.world.GameWorld;
 import game.world.model.GameMap;
+import game.world.model.specialMaps.L1M00;
 import game.world.model.specialMaps.L1M01;
 import game.world.model.specialMaps.L1M02;
 import game.world.model.specialMaps.L1M03;
@@ -52,6 +53,7 @@ public class GameControl
 	private void setupSpecialMaps()
 	{
 		specialLevels = new TreeMap<String, Class<? extends GameMap>>();
+		specialLevels.put("1-0", L1M00.class);
 		specialLevels.put("1-1", L1M01.class);
 		specialLevels.put("1-2", L1M02.class);
 		specialLevels.put("1-3", L1M03.class);

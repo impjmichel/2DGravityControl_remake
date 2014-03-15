@@ -70,7 +70,7 @@ public class EditorFrame extends JFrame implements KeyListener, ActionListener
 		else
 		{
 			currentLevel = 1;
-			currentMap = 1;
+			currentMap = 0;
 			maxLevel = levels.size();
 			maxMap = levels.get("level " + currentLevel).getMaps().size();
 		}
@@ -202,7 +202,7 @@ public class EditorFrame extends JFrame implements KeyListener, ActionListener
 
 	private void addNewLevel()
 	{
-		maxMap = 0;
+		maxMap = -1;
 		maxLevel++;
 		EditorLevelInformation value = new EditorLevelInformation(new TreeMap<String, EditorMapInformation>(),
 				new TreeMap<String, List<EditorObjectInformation>>(), new TreeMap<String, Boolean>());
@@ -352,7 +352,7 @@ public class EditorFrame extends JFrame implements KeyListener, ActionListener
 			e.printStackTrace();
 		}
 		maxLevel = levels.size();
-		loadLevelAndMap(1, 1);
+		loadLevelAndMap(maxLevel, 0);
 	}
 
 	private void saveAs()

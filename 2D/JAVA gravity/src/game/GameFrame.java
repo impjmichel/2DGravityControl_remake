@@ -123,7 +123,7 @@ public class GameFrame extends JFrame implements KeyListener
 
 	public void loadMap(int level, int map, Vector2f position)
 	{
-		if (level == 0 || map == 0)
+		if (level == 0)
 		{
 			world.killHero();
 			return;
@@ -351,7 +351,7 @@ public class GameFrame extends JFrame implements KeyListener
 		if (previousMap == null)
 		{
 			curLvl = 1;
-			curMap = 1;
+			curMap = 0;
 			loadMap(curLvl, curMap, new Vector2f(400f, 320));
 		}
 		else

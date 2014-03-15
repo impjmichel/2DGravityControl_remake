@@ -31,7 +31,7 @@ public class EditorToolPanel extends JPanel
 		super(new BorderLayout());
 		this.frame = frame;
 		selectedLevel = 1;
-		selectedMap = 1;
+		selectedMap = 0;
 		setPreferredSize(new Dimension(200, 400));
 		add(createToolBar(), BorderLayout.NORTH);
 		selectionPanel = createSelectionPanel();
@@ -105,7 +105,7 @@ public class EditorToolPanel extends JPanel
 			}
 		});
 		toolBar.add(button);
-		
+
 		toolBar.addSeparator();
 		button = new JButton("PC");
 		button.addActionListener(new ActionListener()
@@ -117,7 +117,7 @@ public class EditorToolPanel extends JPanel
 			}
 		});
 		toolBar.add(button);
-		
+
 		toolBar.addSeparator();
 		button = new JButton("Next Level");
 		button.addActionListener(new ActionListener()
@@ -192,7 +192,7 @@ public class EditorToolPanel extends JPanel
 			}
 		});
 		toolBar.add(button);
-		
+
 		toolBar.addSeparator();
 		button = new JButton("Door");
 		button.addActionListener(new ActionListener()
@@ -204,7 +204,7 @@ public class EditorToolPanel extends JPanel
 			}
 		});
 		toolBar.add(button);
-		
+
 		toolBar.addSeparator();
 		button = new JButton("Line");
 		button.addActionListener(new ActionListener()
@@ -246,8 +246,8 @@ public class EditorToolPanel extends JPanel
 				{
 					JComboBox<String> cb = (JComboBox<String>) e.getSource();
 					selectedLevel = cb.getSelectedIndex() + 1;
-					selectedMap = 1;
-					frame.loadLevelAndMap(selectedLevel, 1);
+					selectedMap = 0;
+					frame.loadLevelAndMap(selectedLevel, selectedMap);
 				}
 			});
 			panel.add(levelBox);
@@ -259,7 +259,7 @@ public class EditorToolPanel extends JPanel
 		{
 			for (int i = 0; i < tempMaps.getMaps().size(); i++)
 			{
-				s.add("Map " + (i + 1));
+				s.add("Map " + i);
 			}
 			JComboBox<String> mapBox = new JComboBox(s.toArray());
 			mapBox.setSelectedIndex(selectedMap - 1);
@@ -269,7 +269,7 @@ public class EditorToolPanel extends JPanel
 				public void actionPerformed(ActionEvent e)
 				{
 					JComboBox cb = (JComboBox) e.getSource();
-					selectedMap = cb.getSelectedIndex() + 1;
+					selectedMap = cb.getSelectedIndex();
 					frame.loadLevelAndMap(selectedLevel, selectedMap);
 				}
 			});
