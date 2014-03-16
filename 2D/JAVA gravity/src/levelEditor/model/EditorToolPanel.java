@@ -270,7 +270,7 @@ public class EditorToolPanel extends JPanel
 				{
 					JComboBox cb = (JComboBox) e.getSource();
 					selectedMap = cb.getSelectedIndex();
-					frame.loadLevelAndMap(selectedLevel, selectedMap);
+					frame.loadLevelAndMap(selectedLevel, selectedMap+1);
 				}
 			});
 			panel.add(mapBox);

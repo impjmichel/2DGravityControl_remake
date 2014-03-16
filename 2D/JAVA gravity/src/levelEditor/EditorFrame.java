@@ -215,7 +215,8 @@ public class EditorFrame extends JFrame implements KeyListener, ActionListener
 	private void addNewMap(EditorLevelInformation value)
 	{
 		maxMap++;
-		EditorMapInformation map = new EditorMapInformation(new ArrayList<EditorObjectInformation>(), new ArrayList<Integer>(), "", "", null, null, new ArrayList<Line2D.Float>(), null);
+		EditorMapInformation map = new EditorMapInformation(new ArrayList<EditorObjectInformation>(), new ArrayList<Integer>(), "", "", null, null,
+				new ArrayList<Line2D.Float>(), null);
 		value.getMaps().put("map " + maxMap, map);
 		currentMap = maxMap;
 		loadLevelAndMap(currentLevel, maxMap);
@@ -226,7 +227,7 @@ public class EditorFrame extends JFrame implements KeyListener, ActionListener
 		if (mainPanel2 != null)
 		{
 			EditorLevelInformation level = levels.get("level " + levelID);
-			maxMap = level.getMaps().size();
+			maxMap = level.getMaps().size() - 1;
 			EditorMapInformation map = level.getMaps().get("map " + mapID);
 			content.remove(mainPanel2);
 			mainPanel2 = new EditorMainPanel(this, map);
@@ -265,6 +266,7 @@ public class EditorFrame extends JFrame implements KeyListener, ActionListener
 	public void actionPerformed(ActionEvent arg0)
 	{
 		repaint();
+		System.out.println("mapID : " + currentMap);
 	}
 
 	@Override

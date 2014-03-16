@@ -43,7 +43,7 @@ public class GameWorld implements ActionListener
 	private int						saveLvl, saveMap;
 	private EditorLevelInformation	currentLevel;
 	private Map<String, String>		DoorPCLink;
-	private boolean					closedL1M3	= true;
+//	private boolean					closedL1M3	= true;
 
 	public GameWorld()
 	{
@@ -201,22 +201,9 @@ public class GameWorld implements ActionListener
 		timePlayed++;
 	}
 
-	private void updateMusic()
-	{
-		if (getVolumeInPerCent() == 0)
-			audioMuted = true;
-		else
-			audioMuted = false;
-		volumeControl.setValue(volume);
-		if (!clip.isActive() && gravitySuit && !audioMuted)
-		{
-			clip.start();
-			clip.loop(Clip.LOOP_CONTINUOUSLY);
-		}
-		if (clip.isActive() && audioMuted)
-			clip.stop();
-	}
-
+	/*
+	 * Time played returned as a string with formatting in HH:mm:ss:hh
+	 */
 	public String slashPlayed(int time)
 	{
 		String s = "";
@@ -247,6 +234,11 @@ public class GameWorld implements ActionListener
 			s += deaths;
 		return s;
 	}
+	
+	public int getDeathCount()
+	{
+		return deaths;
+	}
 
 	public String closedDoors()
 	{
@@ -263,11 +255,25 @@ public class GameWorld implements ActionListener
 			return "" + doors;
 	}
 
-	public int getDeathCount()
+/* -------------------------------------------------------------------------------------------------------- */
+/* ----------------------------------------AUDIO-START----------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------- */
+	private void updateMusic()
 	{
-		return deaths;
+		if (getVolumeInPerCent() == 0)
+			audioMuted = true;
+		else
+			audioMuted = false;
+		volumeControl.setValue(volume);
+		if (!clip.isActive() && gravitySuit && !audioMuted)
+		{
+			clip.start();
+			clip.loop(Clip.LOOP_CONTINUOUSLY);
+		}
+		if (clip.isActive() && audioMuted)
+			clip.stop();
 	}
-
+	
 	public boolean isAudioMuted()
 	{
 		return audioMuted;
@@ -307,6 +313,10 @@ public class GameWorld implements ActionListener
 		this.volume = volume;
 		updateMusic();
 	}
+	
+/* -------------------------------------------------------------------------------------------------------- */
+/* ----------------------------------------AUDIO-END------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------- */
 
 	public EditorLevelInformation getCurrentLevel()
 	{
@@ -330,13 +340,13 @@ public class GameWorld implements ActionListener
 		}
 	}
 
-	public boolean isClosedL1M3()
-	{
-		return closedL1M3;
-	}
-
-	public void setClosedL1M3(boolean closedL1M3)
-	{
-		this.closedL1M3 = closedL1M3;
-	}
+//	public boolean isClosedL1M3()
+//	{
+//		return closedL1M3;
+//	}
+//
+//	public void setClosedL1M3(boolean closedL1M3)
+//	{
+//		this.closedL1M3 = closedL1M3;
+//	}
 }

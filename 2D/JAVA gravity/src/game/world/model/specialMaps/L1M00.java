@@ -46,7 +46,8 @@ public class L1M00 extends GameMap
 	{
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-		g2.setBackground(Color.BLACK);
+		g2.setColor(new Color(0, 0, 0, 255));
+		g2.fill(new Rectangle2D.Double(0, 0, 920, 600));
 		if (tutorial)
 		{
 			g2.setStroke(new BasicStroke(1));
@@ -134,6 +135,12 @@ public class L1M00 extends GameMap
 		if (!tutorial)
 		{
 			setRunning(true);
+			world.setGravitySuit(true);
+			world2D.remove(hero2D);
+			hero.switchBody();
+			hero2D = hero.getHeroBody();
+			world2D.add(hero2D);
+			frame.loadMap(1, 1, new Vector2f(400f, 320));
 		}
 		else
 		{

@@ -36,7 +36,7 @@ public class GameHero
 
 		try
 		{
-			cube = ImageIO.read(GameHero.class.getResource(Messages.sourceURI+"cube.png"));
+			cube = ImageIO.read(GameHero.class.getResource(Messages.sourceURI+"cube2.png"));
 			stickman = ImageIO.read(GameHero.class.getResource(Messages.sourceURI+"man50x80.png"));
 		}
 		catch (IOException e)
@@ -115,6 +115,7 @@ public class GameHero
 			{
 				AffineTransform tr = new AffineTransform();
 				tr.translate(p1.x, p1.y);
+				tr.scale(.1625, .1625);
 				tr.rotate(body.getRotation(), 0, 0);
 				g2.drawImage(cube, tr, null);
 			}

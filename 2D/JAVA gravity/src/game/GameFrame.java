@@ -8,6 +8,7 @@ import game.world.model.menu.AudioControlPanel;
 import game.world.model.menu.GameMenuPanel;
 import game.world.model.menu.HiScorePanel;
 import game.world.model.menu.KeyControlPanel;
+import game.world.model.specialMaps.L1M00;
 import game.world.model.specialMaps.L1M01;
 import game.world.model.specialMaps.L1M02;
 import game.world.model.specialMaps.L1M03;
@@ -123,7 +124,7 @@ public class GameFrame extends JFrame implements KeyListener
 
 	public void loadMap(int level, int map, Vector2f position)
 	{
-		if (level == 0)
+		if (level == 0 || (tutorial > 0 && map == 0))
 		{
 			world.killHero();
 			return;
@@ -136,6 +137,8 @@ public class GameFrame extends JFrame implements KeyListener
 		try
 		{
 			Class<? extends GameMap> cl = specialLevels.get("" + level + "-" + map);
+			if (cl == specialLevels.get("1-0"))
+				panel = new L1M00(world, this, objectList, position);
 			if (cl == specialLevels.get("1-1"))
 				panel = new L1M01(world, this, objectList, position);
 			if (cl == specialLevels.get("1-2"))
@@ -176,13 +179,7 @@ public class GameFrame extends JFrame implements KeyListener
 				panel.setLine2(Messages.thirtyfifthDeath2);
 				thirtyfiveDeathsSeen = true;
 			}
-			if (tutorial == 0)
-			{
-				panel.setSeen(false);
-				panel.setShow(false);
-				tutorial++;
-			}
-			else if (tutorial == 1)
+			if (tutorial == curMap)
 			{
 				panel.setSeen(false);
 				panel.setShow(false);
@@ -272,6 +269,11 @@ public class GameFrame extends JFrame implements KeyListener
 	public int getCurMap()
 	{
 		return curMap;
+	}
+
+	public int getTutorial()
+	{
+		return tutorial;
 	}
 
 	public boolean isEditorEnabled()
