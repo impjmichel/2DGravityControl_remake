@@ -34,7 +34,7 @@ public class GameMenuPanel extends GamePanel implements ActionListener
 	public GameMenuPanel(GameWorld world, GameFrame frame)
 	{
 		super(world, frame);
-		setPreferredSize(new Dimension(890, 590));
+		setPreferredSize(new Dimension((int)(890 * world.getZoomFactor()), (int)(590*world.getZoomFactor())));
 		select = 0;
 		maxSelect = 5;
 		if (frame.isEditorEnabled())
@@ -53,7 +53,7 @@ public class GameMenuPanel extends GamePanel implements ActionListener
 	{
 		super.paintComponents(g);
 		Graphics2D g2 = (Graphics2D) g;
-
+		g2.scale(world.getZoomFactor(), world.getZoomFactor());
 		g2.translate(300, 150);
 		Font font = new Font("Serif", Font.BOLD, 60);
 		g2.setFont(font);

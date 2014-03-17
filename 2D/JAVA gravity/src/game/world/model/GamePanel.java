@@ -122,16 +122,18 @@ public abstract class GamePanel extends JPanel
 	{
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
+		
 		if (world.time.isRunning())
 		{
-			Font font = new Font("Monospaced", Font.BOLD, 30);
+			Font font = new Font("Monospaced", Font.BOLD, (int) (30* world.getZoomFactor()));
 			g2.setFont(font);
-			g2.drawString(world.slashPlayed(world.getTimePlayed()), 720, 20);
-			g2.drawString(world.getDeaths(), 0, 20);
-			g2.drawString(world.closedDoors(), 0, 600);
+			g2.drawString(world.slashPlayed(world.getTimePlayed()), (int) (715 * world.getZoomFactor()), (int) (20 * world.getZoomFactor()));
+			g2.drawString(world.getDeaths(), 0, (int) (20 * world.getZoomFactor()));
+			g2.drawString(world.closedDoors(), 0, (int) (595 * world.getZoomFactor()));
 
 			Vector2f left = new Vector2f(moving, 0);
 			world.getHero().move(left);
 		}
+		g2.scale(world.getZoomFactor(), world.getZoomFactor());
 	}
 }

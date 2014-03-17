@@ -69,6 +69,7 @@ public class GameFrame extends JFrame implements KeyListener
 		enterKey = KeyEvent.VK_SPACE;
 		dejavuSet = new TreeSet<String>();
 		activatedSet = new TreeSet<String>();
+		
 	}
 
 	@Override
@@ -131,6 +132,8 @@ public class GameFrame extends JFrame implements KeyListener
 		}
 		EditorLevelInformation currentlevel = levels.get("level " + level);
 		EditorMapInformation objectList = currentlevel.getMaps().get("map " + map);
+		if(objectList == null)
+			System.exit(0);
 		curLvl = level;
 		curMap = map;
 		GameMap panel = new GameMap(world, this, objectList, position);

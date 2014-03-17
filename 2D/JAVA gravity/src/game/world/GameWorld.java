@@ -2,6 +2,8 @@ package game.world;
 
 import game.GameFrame;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -43,10 +45,11 @@ public class GameWorld implements ActionListener
 	private int						saveLvl, saveMap;
 	private EditorLevelInformation	currentLevel;
 	private Map<String, String>		DoorPCLink;
-//	private boolean					closedL1M3	= true;
+	private double					zoomFactor	= 1;
 
 	public GameWorld()
 	{
+		zoomFactor = (Toolkit.getDefaultToolkit().getScreenSize().height - 80) / 600.0;
 		gravitySuit = false;
 		gravity = new Vector2f(.0f, 30.0f);
 		world2D = new World(gravity, 10, new QuadSpaceStrategy(200, 5));
@@ -277,6 +280,16 @@ public class GameWorld implements ActionListener
 	public boolean isAudioMuted()
 	{
 		return audioMuted;
+	}
+
+	public double getZoomFactor()
+	{
+		return zoomFactor;
+	}
+
+	public void setZoomFactor(double zoomFactor)
+	{
+		this.zoomFactor = zoomFactor;
 	}
 
 	public void setAudioMuted(boolean audioMuted)
