@@ -64,7 +64,7 @@ public class GameWorld implements ActionListener
 
 		try
 		{
-			stream = AudioSystem.getAudioInputStream(getClass().getResource("/game/source/8 Bit Portal - Still Alive.wav"));
+			stream = AudioSystem.getAudioInputStream(getClass().getResource("/game/source/8 Bit Portal - Want You Gone.wav"));
 			format = stream.getFormat();
 			info = new DataLine.Info(Clip.class, format);
 			clip = (Clip) AudioSystem.getLine(info);

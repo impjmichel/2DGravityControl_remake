@@ -481,7 +481,7 @@ public class GameMap extends GamePanel implements ActionListener
 		if (hero2D.getPosition().getY() > 280)
 			factY = 0;
 		else
-			factY = 525;
+			factY = 520;
 		if (world.isDead() || gettingUp)
 			deadCounter++;
 		if (running && !world.isDead())

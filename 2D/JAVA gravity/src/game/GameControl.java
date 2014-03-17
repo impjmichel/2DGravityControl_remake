@@ -43,6 +43,7 @@ public class GameControl
 		world = new GameWorld();
 		load("src/data.glf");
 		frame = new GameFrame(world, levels, hiScore, specialLevels, editorEnabled);
+//		frame.setEditorEnabled(true);
 		world.setFrame(frame);
 		frame.pack();
 		frame.setLocationRelativeTo(null);

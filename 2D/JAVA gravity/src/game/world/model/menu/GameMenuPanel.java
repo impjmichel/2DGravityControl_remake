@@ -160,6 +160,9 @@ public class GameMenuPanel extends GamePanel implements ActionListener
 
 	public void update()
 	{
+		maxSelect = 5;
+		if (frame.isEditorEnabled())
+			maxSelect++;
 		repaint();
 	}
 
