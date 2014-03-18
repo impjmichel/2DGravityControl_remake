@@ -23,26 +23,26 @@ import net.phys2d.math.Vector2f;
 public class L1M00 extends GameMap
 {
 	private static final long	serialVersionUID	= 1L;
-	private boolean				tutorial			= false;
+	private int					tutorial			= 0;
 	private boolean				tutorialEnd			= false;
 	private boolean				tutorialMoved		= false;
 	private int					tutorialX			= 920;
 	private boolean				colorGain			= true;
 	private int					colorN				= 30;
-	private String[]			s = {"Welcome back.", "You might wonder 'why is it so dark?'"};
+	private String[]			s					= { "", "Welcome back.", "", "You might wonder", "   'why is it so dark?'" };
 
 	public L1M00(GameWorld world, GameFrame frame, EditorMapInformation objects, Vector2f position)
 	{
 		super(world, frame, objects, position);
 	}
-	
+
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(new Color(0, 0, 0, 255));
 		g2.fill(new Rectangle2D.Double(0, 0, 920, 600));
-		if (tutorial)
+		if (tutorial > 0)
 		{
 			g2.setStroke(new BasicStroke(1));
 			g2.setColor(new Color(0, 0, 0, 180));
@@ -51,9 +51,9 @@ public class L1M00 extends GameMap
 			Font font = new Font("Serif", Font.BOLD, 50);
 			g2.setFont(font);
 			FontRenderContext frc = g2.getFontRenderContext();
-			GlyphVector gv = font.createGlyphVector(frc, s[0]);
+			GlyphVector gv = font.createGlyphVector(frc, s[tutorial]);
 			Shape glyph = gv.getOutline(tutorialX + 30, 280);
-			GlyphVector gv2 = font.createGlyphVector(frc, s[1]);
+			GlyphVector gv2 = font.createGlyphVector(frc, s[tutorial+1]);
 			Shape glyph2 = gv2.getOutline(tutorialX + 30, 340);
 			g2.setColor(new Color(220, 220, 220, 255));
 			g2.fill(glyph);
@@ -82,21 +82,19 @@ public class L1M00 extends GameMap
 			g2.draw(triangle);
 		}
 	}
-	
-	@Override
-	public void left()
-	{
-		super.left();
-		if (tutorialEnd && tutorialX < 20)
-			tutorialMoved = true;
-	}
 
 	@Override
-	public void right()
+	public void enter()
 	{
-		super.right();
 		if (tutorialEnd && tutorialX < 20)
+		{
 			tutorialMoved = true;
+		}
+		else if (tutorialX < 20)
+		{
+			tutorial += 2;
+		}
+		super.enter();
 	}
 
 	@Override
@@ -113,20 +111,22 @@ public class L1M00 extends GameMap
 
 		if (!seen)
 		{
-			tutorial = true;
+			if (tutorial == 0)
+				tutorial = 1;
 			if (tutorialX > 0)
 			{
 				tutorialX -= 15;
-				tutorialEnd = true;
+				if (tutorial >= 10)
+					tutorialEnd = true;
 			}
 			if (tutorialMoved)
 			{
 				tutorialX -= 15;
 				if (tutorialX < -930)
-					tutorial = false;
+					tutorial = 255;
 			}
 		}
-		if (!tutorial)
+		if (tutorial == 255)
 		{
 			setRunning(true);
 			world.setGravitySuit(true);
