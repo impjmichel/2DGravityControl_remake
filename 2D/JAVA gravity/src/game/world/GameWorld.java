@@ -241,6 +241,11 @@ public class GameWorld implements ActionListener
 	{
 		return deaths;
 	}
+	
+	public void setDeathCount(int count)
+	{
+		deaths = count;
+	}
 
 	public String closedDoors()
 	{

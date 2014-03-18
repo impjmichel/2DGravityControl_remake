@@ -12,6 +12,7 @@ import game.world.model.specialMaps.L1M00;
 import game.world.model.specialMaps.L1M01;
 import game.world.model.specialMaps.L1M02;
 import game.world.model.specialMaps.L1M03;
+import game.world.model.specialMaps.L1M04;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -148,6 +149,8 @@ public class GameFrame extends JFrame implements KeyListener
 				panel = new L1M02(world, this, objectList, position);
 			if (cl == specialLevels.get("1-3"))
 				panel = new L1M03(world, this, objectList, position);
+			if (cl == specialLevels.get("1-4"))
+				panel = new L1M04(world, this, objectList, position);
 			// if (cl == specialLevels.get("1-20"))
 			// panel = new L1M20(world, this, objectList, position);
 			// TODO: add special map here

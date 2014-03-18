@@ -29,7 +29,19 @@ public class L1M00 extends GameMap
 	private int					tutorialX			= 920;
 	private boolean				colorGain			= true;
 	private int					colorN				= 30;
-	private String[]			s					= { "", "Welcome back.", "", "You might wonder", "   'why is it so dark?'" };
+	private String[]			s					= { "", "Welcome back.", "", 
+														"You might wonder", "   'why is it so dark?'",
+														"I've been saving energy lately.","You know...",
+														"For the sake of resurrecting you again.", "And again, and again, and again",
+														"It has been quite some time since", "our last meeting.", 
+														"Summarizing your life thus far seems", "the right thing to do.",
+														"", "   *ahemm*",
+														"You learned to walk.","", 
+														"You learned to interact with objects.","", 
+														"You received the gravity suit.","", 
+														"You failed.","", 
+														"The end.","", 
+														"The end.", "                        -your life-"};
 
 	public L1M00(GameWorld world, GameFrame frame, EditorMapInformation objects, Vector2f position)
 	{
@@ -44,23 +56,26 @@ public class L1M00 extends GameMap
 		g2.fill(new Rectangle2D.Double(0, 0, 920, 600));
 		if (tutorial > 0)
 		{
-			g2.setStroke(new BasicStroke(1));
-			g2.setColor(new Color(0, 0, 0, 180));
-			g2.fill(new Rectangle2D.Double(tutorialX, 200, 920, 200));
-			g2.setColor(new Color(200, 200, 200, 255));
-			Font font = new Font("Serif", Font.BOLD, 50);
-			g2.setFont(font);
-			FontRenderContext frc = g2.getFontRenderContext();
-			GlyphVector gv = font.createGlyphVector(frc, s[tutorial]);
-			Shape glyph = gv.getOutline(tutorialX + 30, 280);
-			GlyphVector gv2 = font.createGlyphVector(frc, s[tutorial+1]);
-			Shape glyph2 = gv2.getOutline(tutorialX + 30, 340);
-			g2.setColor(new Color(220, 220, 220, 255));
-			g2.fill(glyph);
-			g2.fill(glyph2);
-			g2.setColor(new Color(0, 0, 0, 255));
-			g2.draw(glyph);
-			g2.draw(glyph2);
+			if (s.length > tutorial)
+			{
+				g2.setStroke(new BasicStroke(1));
+				g2.setColor(new Color(0, 0, 0, 180));
+				g2.fill(new Rectangle2D.Double(tutorialX, 200, 920, 200));
+				g2.setColor(new Color(200, 200, 200, 255));
+				Font font = new Font("Serif", Font.BOLD, 50);
+				g2.setFont(font);
+				FontRenderContext frc = g2.getFontRenderContext();
+				GlyphVector gv = font.createGlyphVector(frc, s[tutorial]);
+				Shape glyph = gv.getOutline(tutorialX + 30, 280);
+				GlyphVector gv2 = font.createGlyphVector(frc, s[tutorial+1]);
+				Shape glyph2 = gv2.getOutline(tutorialX + 30, 340);
+				g2.setColor(new Color(220, 220, 220, 255));
+				g2.fill(glyph);
+				g2.fill(glyph2);
+				g2.setColor(new Color(0, 0, 0, 255));
+				g2.draw(glyph);
+				g2.draw(glyph2);
+			}
 		}
 		if (!tutorialMoved && tutorialX <= 0)
 		{
@@ -80,6 +95,7 @@ public class L1M00 extends GameMap
 			g2.fill(triangle);
 			g2.setColor(Color.BLACK);
 			g2.draw(triangle);
+			// TODO: draw a enter thingy.
 		}
 	}
 
@@ -116,8 +132,6 @@ public class L1M00 extends GameMap
 			if (tutorialX > 0)
 			{
 				tutorialX -= 15;
-				if (tutorial >= 10)
-					tutorialEnd = true;
 			}
 			if (tutorialMoved)
 			{
@@ -125,6 +139,10 @@ public class L1M00 extends GameMap
 				if (tutorialX < -930)
 					tutorial = 255;
 			}
+		}
+		if (tutorial >= s.length -1)
+		{
+			tutorialEnd = true;
 		}
 		if (tutorial == 255)
 		{

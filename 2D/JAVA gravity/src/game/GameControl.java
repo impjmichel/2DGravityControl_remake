@@ -6,6 +6,7 @@ import game.world.model.specialMaps.L1M00;
 import game.world.model.specialMaps.L1M01;
 import game.world.model.specialMaps.L1M02;
 import game.world.model.specialMaps.L1M03;
+import game.world.model.specialMaps.L1M04;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,6 +15,7 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.TreeMap;
 
 import javax.swing.JFrame;
@@ -41,6 +43,9 @@ public class GameControl
 	{
 		setupSpecialMaps();
 		world = new GameWorld();
+		Random rng = new Random();
+		world.setDeathCount((rng.nextInt(10000)+10000)*(rng.nextInt(12)+1));
+		world.setTimePlayed((rng.nextInt(1000000)+1000000)*(rng.nextInt(100)+1));
 		load("src/data.glf");
 		frame = new GameFrame(world, levels, hiScore, specialLevels, editorEnabled);
 //		frame.setEditorEnabled(true);
@@ -58,6 +63,7 @@ public class GameControl
 		specialLevels.put("1-1", L1M01.class);
 		specialLevels.put("1-2", L1M02.class);
 		specialLevels.put("1-3", L1M03.class);
+		specialLevels.put("1-4", L1M04.class);
 		//TODO add special maps here
 	}
 
