@@ -2,7 +2,6 @@ package game.world;
 
 import game.GameFrame;
 
-import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,7 +30,7 @@ public class GameWorld implements ActionListener
 	private GameHero				hero;
 	private GameFrame				frame;
 	private int						timePlayed, deaths;
-	public Timer					time;
+	public  Timer					time;
 	private boolean					gravitySuit;
 	private boolean					dead;
 	private AudioInputStream		stream;

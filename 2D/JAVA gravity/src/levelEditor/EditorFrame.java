@@ -266,7 +266,6 @@ public class EditorFrame extends JFrame implements KeyListener, ActionListener
 	public void actionPerformed(ActionEvent arg0)
 	{
 		repaint();
-		System.out.println("mapID : " + currentMap);
 	}
 
 	@Override
@@ -423,6 +422,16 @@ public class EditorFrame extends JFrame implements KeyListener, ActionListener
 	public void setCurrentLevel(int currentLevel)
 	{
 		this.currentLevel = currentLevel;
+	}
+
+	public int getCurrentMap()
+	{
+		return currentMap;
+	}
+
+	public void setCurrentMap(int currentMap)
+	{
+		this.currentMap = currentMap;
 	}
 
 	public EditorControl getControl()

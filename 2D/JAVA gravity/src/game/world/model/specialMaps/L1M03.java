@@ -3,7 +3,6 @@ package game.world.model.specialMaps;
 import game.GameFrame;
 import game.world.GameWorld;
 import game.world.model.GameMap;
-import game.world.model.Messages;
 import game.world.model.menu.KeyControlPanel;
 
 import java.awt.BasicStroke;
@@ -11,23 +10,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.font.FontRenderContext;
 import java.awt.font.GlyphVector;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import levelEditor.model.EditorMapInformation;
 import net.phys2d.math.Vector2f;
-import net.phys2d.raw.Body;
-import net.phys2d.raw.StaticBody;
-import net.phys2d.raw.shapes.Box;
 
 public class L1M03 extends GameMap
 {
@@ -129,20 +120,23 @@ public class L1M03 extends GameMap
 			colorGain = true;
 		if (!seen)
 		{
-			tutorial = true;
-			hero.setPaused(true);
-			if (tutorialX > 0)
+			if(frame.getTutorial() <= 4)
 			{
-				tutorialX -= 15;
-				tutorialEnd = true;
-			}
-			if (tutorialMoved)
-			{
-				tutorialX -= 15;
-				if (tutorialX < -930)
+				tutorial = true;
+				hero.setPaused(true);
+				if (tutorialX > 0)
 				{
-					tutorial = false;
-					hero.setPaused(false);
+					tutorialX -= 15;
+					tutorialEnd = true;
+				}
+				if (tutorialMoved)
+				{
+					tutorialX -= 15;
+					if (tutorialX < -930)
+					{
+						tutorial = false;
+						hero.setPaused(false);
+					}
 				}
 			}
 		}

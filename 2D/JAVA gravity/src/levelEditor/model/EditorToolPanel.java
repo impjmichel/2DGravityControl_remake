@@ -30,8 +30,8 @@ public class EditorToolPanel extends JPanel
 	{
 		super(new BorderLayout());
 		this.frame = frame;
-		selectedLevel = 1;
-		selectedMap = 0;
+		selectedLevel = frame.getCurrentLevel();
+		selectedMap = frame.getCurrentMap();
 		setPreferredSize(new Dimension(200, 400));
 		add(createToolBar(), BorderLayout.NORTH);
 		selectionPanel = createSelectionPanel();
@@ -262,7 +262,7 @@ public class EditorToolPanel extends JPanel
 				s.add("Map " + i);
 			}
 			JComboBox<String> mapBox = new JComboBox(s.toArray());
-			mapBox.setSelectedIndex(selectedMap - 1);
+			mapBox.setSelectedIndex(selectedMap);
 			mapBox.addActionListener(new ActionListener()
 			{
 				@Override
@@ -270,7 +270,7 @@ public class EditorToolPanel extends JPanel
 				{
 					JComboBox cb = (JComboBox) e.getSource();
 					selectedMap = cb.getSelectedIndex();
-					frame.loadLevelAndMap(selectedLevel, selectedMap+1);
+					frame.loadLevelAndMap(selectedLevel, selectedMap);
 				}
 			});
 			panel.add(mapBox);
