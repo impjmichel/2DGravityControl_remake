@@ -1,5 +1,9 @@
 package game.world.model.specialMaps;
 
+import game.GameFrame;
+import game.world.GameWorld;
+import game.world.model.GameMap;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -15,10 +19,6 @@ import java.awt.geom.Rectangle2D;
 
 import levelEditor.model.EditorMapInformation;
 import net.phys2d.math.Vector2f;
-import game.GameFrame;
-import game.world.GameWorld;
-import game.world.model.GameMap;
-import game.world.model.menu.KeyControlPanel;
 
 public class L1M00 extends GameMap
 {
@@ -29,17 +29,11 @@ public class L1M00 extends GameMap
 	private int					tutorialX			= 920;
 	private boolean				colorGain			= true;
 	private int					colorN				= 30;
-	private String[]			s;
+	private String[]			s = {"Welcome back.", "You might wonder 'why is it so dark?'"};
 
 	public L1M00(GameWorld world, GameFrame frame, EditorMapInformation objects, Vector2f position)
 	{
 		super(world, frame, objects, position);
-		KeyControlPanel p = new KeyControlPanel(world, frame);
-		String str = p.getKeyString(frame.getLeftKey());
-		String str2 = p.getKeyString(frame.getRightKey());
-		String str3 = p.getKeyString(frame.getEnterKey());
-		String str4 = p.getKeyString(frame.getSwitchKey());
-		s = new String[] { str, str2, str3, str4 };
 	}
 	
 	public void paintComponent(Graphics g)

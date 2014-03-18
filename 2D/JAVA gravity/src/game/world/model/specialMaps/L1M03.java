@@ -34,28 +34,6 @@ public class L1M03 extends GameMap
 	public L1M03(GameWorld world, GameFrame frame, EditorMapInformation objects, Vector2f position)
 	{
 		super(world, frame, objects, position);
-//		doorY = 380;
-//		door = new StaticBody("extra door", new Box(30, 280));
-//		door.setPosition(800, doorY);
-//		world2D.add(door);
-//		try
-//		{
-//			gSuit = ImageIO.read(L1M03.class.getResource(Messages.sourceURI + "gravity suit200x200.png"));
-//			gChange = ImageIO.read(L1M03.class.getResource(Messages.sourceURI + "change sprite300x200.png"));
-//			gCatch = ImageIO.read(L1M03.class.getResource(Messages.sourceURI + "catching200x200.png"));
-//		}
-//		catch (IOException e)
-//		{
-//			e.printStackTrace();
-//		}
-//		KeyControlPanel p = new KeyControlPanel(world, frame);
-//		if(interAct1 != null && interAct1.size() > 2)
-//		{
-//			str = p.getKeyString(frame.getSwitchKey());
-//			str = "Press " + str + " to use its functionality.";
-//			interAct1.add(3, str);
-//			interAct2.add(3, "");
-//		}
 	}
 
 	@Override
@@ -98,13 +76,13 @@ public class L1M03 extends GameMap
 	}
 
 	@Override
-	public void enter()
+	public void flip()
 	{
 		if (tutorialEnd && tutorialX < 20)
 		{
 			tutorialMoved = true;
 		}
-		super.enter();
+		super.flip();
 	}
 
 	@Override
