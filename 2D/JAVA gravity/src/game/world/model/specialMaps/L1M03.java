@@ -78,11 +78,10 @@ public class L1M03 extends GameMap
 	@Override
 	public void flip()
 	{
-		if (tutorialEnd && tutorialX < 20)
-		{
+		if (tutorialEnd && tutorialX < 20 && tutorial)
 			tutorialMoved = true;
-		}
-		super.flip();
+		else
+			super.flip();
 	}
 
 	@Override
