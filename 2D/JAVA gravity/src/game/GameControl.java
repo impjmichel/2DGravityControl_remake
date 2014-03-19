@@ -48,7 +48,7 @@ public class GameControl
 		world.setTimePlayed((rng.nextInt(1000000)+1000000)*(rng.nextInt(100)+1));
 		load("src/data.glf");
 		frame = new GameFrame(world, levels, hiScore, specialLevels, editorEnabled);
-//		frame.setEditorEnabled(true);
+		frame.setEditorEnabled(true);
 		world.setFrame(frame);
 		frame.pack();
 		frame.setLocationRelativeTo(null);

@@ -100,7 +100,7 @@ public class GameMap extends GamePanel implements ActionListener
 		imgX = 0;
 		imgY = 0;
 		gettingUp = false;
-		seen = frame.dejavuCheck();
+		
 		line1 = objects.getLine1();
 		line2 = objects.getLine2();
 
@@ -109,7 +109,7 @@ public class GameMap extends GamePanel implements ActionListener
 
 		if ((!line1.equals("") && !line2.equals("")) || (line1.length() > 0))
 			show = true;
-
+		
 		walls = new ArrayList<Body>();
 		spikes = new ArrayList<GameSpike>();
 		blocks = new ArrayList<GameFallingObject>();
@@ -385,7 +385,7 @@ public class GameMap extends GamePanel implements ActionListener
 				g2.drawString(str, (int) (884 - str.length() * 6), 385);
 			}
 		}
-		else if (!seen && show)
+		if (!seen && show)
 		{
 			g2.setStroke(new BasicStroke(1));
 			g2.setColor(new Color(0, 0, 0, 180));

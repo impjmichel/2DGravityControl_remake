@@ -42,7 +42,7 @@ public class GameFrame extends JFrame implements KeyListener
 	private Map<String, Class<? extends GameMap>>	specialLevels;
 	private Set<String>								dejavuSet;
 	private Set<String>								activatedSet;
-	private boolean									extraFact				= false;
+//	private boolean									extraFact				= false;
 	private boolean									tenDeathsSeen			= false;
 	private boolean									twentyfiveDeathsSeen	= false;
 	private boolean									thirtyfiveDeathsSeen	= false;
@@ -161,6 +161,7 @@ public class GameFrame extends JFrame implements KeyListener
 		}
 		finally
 		{
+			panel.setSeen(dejavuCheck());
 			if (world.getDeathCount() >= 10 && !tenDeathsSeen)
 			{
 				panel.setSeen(false);
@@ -185,7 +186,8 @@ public class GameFrame extends JFrame implements KeyListener
 				panel.setLine2(Messages.thirtyfifthDeath2);
 				thirtyfiveDeathsSeen = true;
 			}
-			if (tutorial == curMap)
+			
+			if (tutorial == curMap && tutorial < 5)
 			{
 				panel.setSeen(false);
 				panel.setShow(false);
@@ -374,7 +376,7 @@ public class GameFrame extends JFrame implements KeyListener
 			dejavuSet.add(str);
 			return false;
 		}
-		if (dejavuSet.contains(str) && !extraFact)
+		if (dejavuSet.contains(str) )//&& !extraFact)
 			return true;
 		else
 		{
